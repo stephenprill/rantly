@@ -1,7 +1,7 @@
 Sing Up aka Registrations New
 
 
-<%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+<%= form_for @user, url: signup_path, html:{class: 'form-horizontal'} do |f| %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
@@ -15,5 +15,5 @@ Sing Up aka Registrations New
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Sign Up" %>
 <% end %>

@@ -11,7 +11,7 @@ feature 'SignUp' do
     fill_in "Password", with: "password"
     within ".form-horizontal" do
       click_on "Sign Up"
-      end
+    end
     expect(page).to have_content("Chaka")
   end
 end
