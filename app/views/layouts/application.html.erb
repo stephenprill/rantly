@@ -14,9 +14,13 @@
          <a class="navbar-brand"<%=link_to "Rantly", root_path%></a>
          <%= link_to "Rants", root_path %>
          <%= link_to "Users", users_path %>
-         <%= link_to "Sign Up", signup_path %>
          <% if current_user %>
-          <%= current_user.first_name %>
+            <%= current_user.first_name %>
+            <%= link_to "Sign Out", signout_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign Up", signup_path %>
+            <%= link_to "Log In", signin_path %>
+
          <% end %>
        </div>
      </div>

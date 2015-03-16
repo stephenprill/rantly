@@ -3,5 +3,11 @@ Rails.application.routes.draw do
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'
 
+  get '/sign-in' => 'authentications#new', as: :signin
+  post '/sign-in' => 'authentications#create'
+
+  delete '/sign-out' => 'registrations#destroy', as: :signout
+
+
   resources :users
 end
