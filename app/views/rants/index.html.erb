@@ -1,7 +1,10 @@
-Rants Index
+<div class="page-header">
+  <h2>Rants Index</h2>
+</div>
 
 
-<% @rants.each do |rant| %>
-<%= rant.title %>
-<%= rant.body %>
-<% end %>
+  <% @rants.each do |rant| %>
+    Rant Title: <%= rant.title %><br>
+    Rant Body: <%= rant.body %><br>
+    <%= link_to "Edit", edit_rant_path(rant) %>
+  <% end %>
