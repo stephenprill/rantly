@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   delete '/sign-out' => 'registrations#destroy', as: :signout
 
+  get '/search' => 'rants#index', as: :search
+
 
   resources :users
   resources :rants

@@ -2,9 +2,8 @@
   <h2>Rants Index</h2>
 </div>
 
-
   <% @rants.each do |rant| %>
-    Rant Title: <%= rant.title %><br>
-    Rant Body: <%= rant.body %><br>
-    <%= link_to "Edit", edit_rant_path(rant) %>
+    <h5>Rant Title:</h5> <%= rant.title %><br>
+    <h5>Rant Body:</h5> <%= rant.body %><br>
+    <%= link_to "Edit", edit_rant_path(rant) %><br><br>
   <% end %>

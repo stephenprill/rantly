@@ -20,14 +20,12 @@
           <% else %>
             <%= link_to "Sign Up", signup_path %>
             <%= link_to "Log In", signin_path %>
-
          <% end %>
        </div>
      </div>
-         <%= form_tag("/search", method: "get") do %>
-         <%= label_tag(:q, "Search for:") %>
-         <%= text_field_tag(:q, nil, :placeholder => "Search") %>
-         <%= submit_tag("Search") %>
+         <%= form_tag search_path, class:"search", :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search", class: "search" %>
+          <%= submit_tag "Search", :name => nil, class: "btn btn-warning" %>
          <% end %>
          <%= link_to "New Rant", new_rant_path %>
    </div>
