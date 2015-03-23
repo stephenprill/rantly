@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :rants
-  
+
 end
