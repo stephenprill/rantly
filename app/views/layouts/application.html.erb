@@ -25,7 +25,7 @@
      </div>
          <%= form_tag search_path, class:"search", :method => 'get' do %>
          <% if params[:search] == "" %>
-         <%= text_field_tag :search, params[:search], placeholder: "This can't be blank", class: "search" %>
+         <%= text_field_tag :search, params[:search], placeholder: "This can't be blank!", class: "search" %>
          <% else %>
           <%= text_field_tag :search, params[:search], placeholder: "Search", class: "search" %>
           <% end %>
