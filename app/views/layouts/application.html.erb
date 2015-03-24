@@ -27,6 +27,12 @@
           <%= text_field_tag :search, params[:search], placeholder: "Search", class: "search" %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-warning" %>
          <% end %>
+
+         <% if flash[:notice] %>
+           <div class="notice">
+           <%= flash[:notice] %>
+           </div>
+         <% end %>
          <%= link_to "New Rant", new_rant_path %>
    </div>
  </div>

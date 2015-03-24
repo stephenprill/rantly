@@ -1,7 +1,7 @@
 
 
-<% @rant.each do |rant| %>
+<% @rant.reverse_each do |rant| %>
   <%= rant.title %><br><br>
-  <%= rant.body %>
-  <%= rant.created_at %><br>
+  <%= rant.body %><br><br>
+  <%= rant.created_at %><br><br><br>
 <% end %>
