@@ -1,9 +1,11 @@
 class RantsController < ApplicationController
 
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     # @rants = Rant.all
     @rants = Rant.search(params[:search])
-    if @rants.count < 1 
+    if @rants.count < 1
       flash.now[:notice] = "These aren't droids you were looking for"
     render :index
     end
@@ -54,6 +56,11 @@ class RantsController < ApplicationController
 
   def rant_params
     params.require(:rant).permit(:title, :body, :user_id)
+  end
+
+  def correct_user
+    @rant = current_user.rants.find_by(id: params[:id])
+    redirect_to root_path, notice: "not authorized to edit the rant" if @rant.nil?
   end
 
 
