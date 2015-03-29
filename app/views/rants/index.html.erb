@@ -6,9 +6,11 @@
 </div>
 
   <% @rants.reverse_each do |rant| %>
+
     <h5>Rant Title:</h5> <%= rant.title %><br>
     <h5>Rant Body:</h5> <%= rant.body %><br>
     <h5>Rant Time:</h5> <%= rant.created_at%><br>
+
     <% if current_user %>
       <% if current_user.id == rant.user_id %>
         <%= link_to "Edit", edit_rant_path(rant) %><br><br>
