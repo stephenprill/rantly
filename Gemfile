@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -13,8 +12,6 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'gravtastic'
 
-
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -22,6 +19,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.0'
   gem 'capybara', '~> 2.4.4'
   gem 'launchy', '~> 2.4.3'
+end
 
-
-  end
+group :production do
+  gem 'rails_12factor'
+end
