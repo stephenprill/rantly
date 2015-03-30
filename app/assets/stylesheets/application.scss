@@ -268,12 +268,20 @@ body {
 
 .has-feedback .form-control-feedback {
    margin: 10px 10px 0 0;
+
 }
 
 .has-feedback .fa-user, .has-feedback .fa-lock {
    color: #E7ECEE; // grey
    font-size: 16pt;
 }
+
+.user-form:focus + .fa-user, .user-form:focus + .fa-lock {
+   color: #1ABC9C; // grey
+   font-size: 16pt;
+}
+
+
 
  // User Index
 
