@@ -1,7 +1,27 @@
 
 
-<% @rant.reverse_each do |rant| %>
-  <%= rant.title %><br><br>
-  <%= rant.body %><br><br>
-  <%= rant.created_at %><br><br><br>
-<% end %>
+
+
+
+<div class="scroll">
+
+    <% @user.rants.reverse_each do |rant| %>
+    <div class="rant-frame">
+        <div class="rant-header">
+
+          <% if rant.user == current_user %>
+            <%= link_to "Edit", edit_rant_path(rant), class: "body-button fa fa-edit" %>
+          <% end %>
+
+          <h2><%= link_to rant.title, rant_path(rant) %></h2><br>
+        </div>
+
+            <div class="avatar" style="background-image: url('<%= rant.user.gravatar_url %>')">
+            </div>
+
+        <div class="rant-content">
+          <%= rant.body %>
+        </div>
+    </div>
+  <% end %>
+</div>

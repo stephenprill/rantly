@@ -1,19 +1,24 @@
-Sing Up aka Registrations New
 
 
-<%= form_for @user, url: signup_path, html:{class: 'form-horizontal'} do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div class="form">
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+<%= form_for @user, url: signup_path do |f| %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.text_field :first_name, class: "user-form", placeholder: "First Name" %>
 
-  <%= f.submit "Sign Up" %>
+
+  <%= f.text_field :last_name, class: "user-form", placeholder: "Last Name" %>
+
+
+  <%= f.email_field :email, class: "user-form", placeholder: "Email" %>
+
+  <div class="has-feedback lower-glyphicon">
+    <%= f.password_field :password, class: "user-form", placeholder: "Password" %>
+    <i class="fa fa-lock form-control-feedback lift"></i>
+  </div>
+
+
+  <%= f.submit "Log In", class: "profile-button" %>
 <% end %>

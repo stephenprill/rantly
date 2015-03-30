@@ -1,10 +1,27 @@
-<%= form_for @rant do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
 
-  <%= f.label :body %>
-  <%= f.text_field :body%>
-  <%= link_to "Delete", rant_path(@rant), method: :delete %>
-  <%= f.submit "Save" %>
+<%  if @rant.errors.any? %>
+  <% @rant.errors.full_messages.each do |message| %>
+  <%= message %>
+ <%  end %>
 <% end %>
+
+<div class="rant-frame">
+ <%= form_for @rant do |f| %>
+  <div class="rant-header">
+    <h2><%= f.text_field :title, class: "wide" %></h2>
+    <%= link_to "Delete", rant_path(@rant), method: :delete, class: "delete-button fa fa-trash-o" %>
+    <%= link_to "Cancel", rants_path, class: "cancel-button fa fa-sign-in" %>
+    <%= f.submit "Save", class: "body-button fa fa-upload lift" %>
+  </div>
+
+
+  <div class="rant-content">
+    <div class="avatar">
+      <div class="count-chocula">
+        <span class ="countdown"></span>
+      </div>
+    </div>
+      <%= f.text_area :body, class:"text-area message" %>
+    </div>
+ <% end %>
