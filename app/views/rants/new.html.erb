@@ -1,5 +1,5 @@
 
-<h1>New Rants</h1>
+
 
   <% if @rant.errors.any? %>
     <% @rant.errors.full_messages.each do |message| %>
@@ -7,18 +7,31 @@
     <% end %>
   <% end %>
 
+
+<div class="rant-frame">
   <%= form_for @rant do |f| %>
+    <div class="rant-header">
+      <%= link_to " Cancel", root_path, class:"cancel-button fa fa-sign-in" %>
+      <button class="body-button fa fa-upload lift"> Save</button>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-
-      <%= f.label :body %>
-      <span class="countdown"></span>
-      <%= f.text_area :body, class:"text-area message", :placeholder => "Start your rant"%>
+      <h2><%= f.text_field :title, class: "wide", :placeholder => "Rant Title"  %></h2>
 
 
-    <%= f.submit "Save" %>
-    <%= link_to "Cancel", rants_path %>
+    </div>
+
+    <div class="rant-content">
+<div class="avatar">
+</div>
+
+
+
+
+
+     <%= f.text_area :body, class: "text-area message", :placeholder => "Start ranting" %>
+<br><br><br><br><br><br><br><br><br><br><br>
+     <span class ="countdown"></span>
+
 
   <% end %>
+</div>
+</div>

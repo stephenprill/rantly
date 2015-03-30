@@ -1,50 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rantly</title>
-      <%= stylesheet_link_tag    'application', media: 'all' %>
-      <%= javascript_include_tag 'application' %>
-      <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <div class="header">
-     <div class="navbar navbar-default" role="navigation">
+<head>
+  <title>Rantly</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900|Laila:700|Hind' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="navbar">
+     <div class="container">
+         <%= link_to "Rantly", root_path %>
+         <span><%= link_to "Rants", root_path %></span>
+         <span><%= link_to "Users", users_path %></span>
+         <span><%= link_to "Styleguide", new_rant_path %></span>
+         <% if current_user %>
+            <span class="pull-right"><%= current_user.full_name %></span>
+            <% else %>
+            <span class="pull-right"><%= link_to "Sign Up", signup_path, class: "signup"  %></span>
+
+         <% end %>
+       </div>
+     </div>
+
+     <div class="search-header">
        <div class="container">
-         <div class="navbar-header">
-           <a class="navbar-brand"<%=link_to "Rantly", root_path%></a>
-             <%= link_to "Rants", root_path %>
-             <%= link_to "Users", users_path %>
-             <% if current_user %>
-                <%= current_user.first_name %>
-                <%= link_to "Sign Out", signout_path, method: :delete %>
-              <% else %>
-                <%= link_to "Sign Up", signup_path %>
-                <%= link_to "Log In", signin_path %>
-             <% end %>
+           <%= form_tag search_path, class:"search", :method => 'get' do %>
+               <% if params[:search] == "" %>
+                 <%= text_field_tag :search, params[:search], placeholder: "This can't be blank!", class: "search" %>
+               <% else %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search", class: "search" %>
+               <% end %>
+               <% end %>
+             <%= link_to "New Rant", new_rant_path, class: "new-button" %>
+
          </div>
        </div>
-           <%= form_tag search_path, class:"search", :method => 'get' do %>
-            <% if params[:search] == "" %>
-              <%= text_field_tag :search, params[:search], placeholder: "This can't be blank!", class: "search" %>
-            <% else %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search", class: "search" %>
-           <% end %>
-              <%= submit_tag "Search", :name => nil, class: "btn btn-warning" %>
-           <% end %>
-
-           <% if flash[:notice] %>
-             <div class="notice">
-               <%= flash[:notice] %>
-             </div>
-           <% end %>
-
-           <%= link_to "New Rant", new_rant_path %>
-     </div>
-   </div>
 
     <div class="container">
-      <%= yield %>
-    </div>
+      <div class="login-frame">
+        <% if current_user == nil %>
+          <br>
+          <%= form_tag signin_path do  %>
 
-  </body>
+          <div class = "has-feedback">
+            <%= email_field_tag :email, nil, class:"user-form", placeholder: "Your email" %>
+            <i class="fa fa-user form-control-feedback"></i>
+          </div>
+
+          <div class = "has-feedback">
+            <%= password_field_tag :password, nil, class:"user-form", placeholder: "Your password" %>
+            <i class="fa fa-lock form-control-feedback"></i>
+          </div><br>
+              <div>
+                <%= submit_tag "Log In", class: "profile-button" %>
+              </div>
+
+            <% end %>
+            <% else %>
+            <div class="picture" style="background-image: url('<%= current_user.gravatar_url %>')">
+              </div>
+              <br>
+              <%= link_to "Log Out", signout_path, method: :delete, class: "profile-button drop"  %>
+            <% end %>
+
+
+        <%= yield :side_error %>
+
+      </div>
+
+      <div class="sub-container">
+
+          <span class="scroll"><%= yield %></span>
+
+       </div>
+     </div>
+
+</body>
+>>>>>>> branch
 </html>
