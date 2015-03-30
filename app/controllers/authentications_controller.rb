@@ -10,7 +10,7 @@ class AuthenticationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      render :new
+      redirect_to rants_path, notice: "Invalid password/email"
     end
   end
 

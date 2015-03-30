@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   get '/search' => 'rants#index', as: :search
 
-
   resources :users
   resources :rants
 

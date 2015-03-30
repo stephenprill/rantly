@@ -12,8 +12,12 @@ class RantsController < ApplicationController
   end
 
   def new
+    if current_user
     @rant = Rant.new
+  else
+    redirect_to rants_path, notice: "fuck off"
   end
+end
 
   def create
     # @user = current_user
