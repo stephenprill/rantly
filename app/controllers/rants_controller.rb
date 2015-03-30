@@ -15,7 +15,7 @@ class RantsController < ApplicationController
     if current_user
     @rant = Rant.new
   else
-    redirect_to rants_path, notice: "fuck off"
+    redirect_to rants_path, notice: "You must be logged in"
   end
 end
 
@@ -30,7 +30,7 @@ end
     @rant = Rant.new(rant_params)
     @rant.user_id = current_user.id
     if @rant.save
-      redirect_to rants_path, notice: "New Rant In The Place"
+      redirect_to rants_path, notice: "Rant successfully created!"
     else
       render :new
     end

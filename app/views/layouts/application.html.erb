@@ -57,6 +57,14 @@
               <div>
                 <%= submit_tag "Log In", class: "profile-button" %>
               </div>
+              <div class="side-notice">
+                <% if notice.is_a? String %>
+            
+                <%= notice %>
+            
+            <% end %>
+              </div>
+
 
             <% end %>
             <% else %>
@@ -64,10 +72,11 @@
               </div>
               <br>
               <%= link_to "Log Out", signout_path, method: :delete, class: "profile-button drop"  %>
+              <%= yield :side_error %>
+
             <% end %>
 
 
-        <%= yield :side_error %>
 
       </div>
 
