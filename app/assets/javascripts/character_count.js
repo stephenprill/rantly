@@ -6,6 +6,6 @@ function updateCountdown() {
 
 jQuery(document).ready(function($) {
     updateCountdown();
-    $('.message').change(updateCountdown);
+    $('.message').change(updateCountdown); 
     $('.message').keyup(updateCountdown);
 });

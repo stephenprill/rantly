@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+
   <div class="navbar">
      <div class="container">
          <%= link_to "Rantly", root_path %>
@@ -59,9 +61,9 @@
               </div>
               <div class="side-notice">
                 <% if notice.is_a? String %>
-            
+
                 <%= notice %>
-            
+
             <% end %>
               </div>
 
@@ -81,10 +83,14 @@
       </div>
 
       <div class="sub-container">
+        <% if notice.is_a? String %>
+
+        <%= notice %>
+
+    <% end %>
 
           <span class="scroll"><%= yield %></span>
-
-       </div>
+      </div>
      </div>
 
 </body>
